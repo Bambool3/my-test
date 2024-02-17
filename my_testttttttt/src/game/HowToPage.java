@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 public class HowToPage extends JPanel {	
     public HowToPage(ActionListener main) {
         this.setBackground(new Color(241, 98, 69));
+        this.setBounds(0, 0, 1000, 600);
         this.setFocusable(true);
 	this.setLayout(null);
         EleButton letStart = new EleButton("Let's start", 15, 380, 400, 200, 50);		

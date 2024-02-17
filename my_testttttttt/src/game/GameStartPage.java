@@ -17,6 +17,7 @@ public class GameStartPage extends JPanel {
     public long point;		
     public GameStartPage(ActionListener main) {
         this.setBackground(new Color(241, 98, 69));
+        this.setBounds(0, 0, 1000, 600);
         this.setFocusable(true);
 	this.setLayout(null);
         EleButton start = new EleButton("start", 15, 380, 400, 200, 50);
