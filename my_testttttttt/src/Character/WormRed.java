@@ -3,11 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Character;
-
-/**
- *
- * @author anakponggun
- */
 public class WormRed {
     public int x, y, wormRize;
     public double health;
