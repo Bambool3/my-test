@@ -35,7 +35,7 @@ public class Weapon {
     }
     public void startAnimation(JPanel page) {
         // Reset time
-        timer = new Timer(50, new ActionListener() {
+        timer = new Timer(30, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 time += 0.1;
