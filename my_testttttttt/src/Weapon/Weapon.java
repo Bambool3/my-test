@@ -9,7 +9,7 @@ import javax.swing.Timer;
 public class Weapon {
     public int x, y, size;
     private double maxDistance;
-    public double initialVelocity = 70; // Initial velocity
+    public int initialVelocity; // Initial velocity
     public double angle = Math.PI / 4; // Angle in radians
     public double gravity = 9.81; // Acceleration due to gravity
     public double time = 0; // Current time
@@ -33,19 +33,23 @@ public class Weapon {
     public double calculateVerticalDistance() {
         return initialVelocity * Math.sin(angle) * time - 0.5 * gravity * time * time;
     }
-    public void startAnimation(JPanel page) {
+    public void startAnimation(JPanel page, int value) {
+        initialVelocity = value;
         // Reset time
-        timer = new Timer(30, new ActionListener() {
+        timer = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 time += 0.1;
                 page.repaint();
-                if (calculateHorizontalDistance() >= maxDistance) {
-                    timer.stop(); // Stop the animation when reaching max distance
-                    check = true;
-                }
+                // Calculate the vertical distance
+                double verticalDistance = calculateVerticalDistance(); 
+                // Check if the vertical distance is less than or equal to 0 (reached the ground)
+                if (verticalDistance <= 0) {
+                    timer.stop(); // Stop the timer
+                    time = 0; // Reset time for future use
+                } 
             }
-        });
-        timer.start();
+        });        
+        timer.start();        
     }
 }

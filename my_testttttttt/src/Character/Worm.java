@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-public class WormRed {
+public class Worm {
     public int x, y, wormSizeX, wormSizeY;
     public double health;
-    public WormRed(int x, int y, int wormSizeX, int wormSizeY, int health) {
+    public Worm(int x, int y, int wormSizeX, int wormSizeY, int health) {
         this.x = x;
         this.y = y;
         this.wormSizeX = wormSizeX;
@@ -22,20 +22,11 @@ public class WormRed {
     public boolean isAlive() {
         return health > 0;
     }
-    public BufferedImage getImageCharacter() {
-        try {
-            BufferedImage Red_Idle = ImageIO.read(getClass().getResource("/image/Red_Idle.png"));
-            return Red_Idle;
-        } catch (IOException ex) {
-            
-        }
-        return null;
-    }
-    public BufferedImage getImageWeapon() {
+    public BufferedImage getImage(String path) {
         BufferedImage image = null;
         try {
             // Load image using resource URL
-            URL resource = getClass().getResource("/image/Red_Weapon.png");
+            URL resource = getClass().getResource(path);
             if (resource != null) {
                 image = ImageIO.read(resource);
             } else {
