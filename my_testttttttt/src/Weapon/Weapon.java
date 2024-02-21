@@ -13,7 +13,7 @@ public class Weapon {
     public double angle = Math.PI / 4; // Angle in radians
     public double gravity = 9.81; // Acceleration due to gravity
     public double time = 0; // Current time
-    public boolean check = false;
+    private boolean hit=false;
     private Timer timer;
     public Weapon() {
     }
@@ -21,7 +21,12 @@ public class Weapon {
         this.x = x;
         this.y = y; 
         this.size = size;
-        calculateMaxDistance();
+    }
+    public void setHit(boolean hit) {
+        this.hit = hit;
+    }
+    public boolean getHit() {
+        return hit;
     }
     private double calculateMaxDistance() {
         maxDistance = Math.pow(initialVelocity, 2) * Math.sin(2 * angle) / gravity;
@@ -33,10 +38,14 @@ public class Weapon {
     public double calculateVerticalDistance() {
         return initialVelocity * Math.sin(angle) * time - 0.5 * gravity * time * time;
     }
+    public void setTime() {
+        this.time = 0;
+    }
     public void startAnimation(JPanel page, int value) {
         initialVelocity = value;
         // Reset time
-        timer = new Timer(10, new ActionListener() {
+        calculateMaxDistance();
+        timer = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 time += 0.1;
@@ -44,9 +53,10 @@ public class Weapon {
                 // Calculate the vertical distance
                 double verticalDistance = calculateVerticalDistance(); 
                 // Check if the vertical distance is less than or equal to 0 (reached the ground)
-                if (verticalDistance <= 0) {
+                if (verticalDistance  <= 0) {
+                    System.out.println(calculateHorizontalDistance() + " "  + maxDistance);
                     timer.stop(); // Stop the timer
-                    time = 0; // Reset time for future use
+                    time = 0;
                 } 
             }
         });        

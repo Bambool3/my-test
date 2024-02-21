@@ -96,8 +96,8 @@ public class ChargeBar extends JComponent {
             g2.setPaint(gra);
             g2.draw(s);
         }
+        repaint();
         g2.setStroke(new BasicStroke(1f));
-
     }
 
     

@@ -10,14 +10,12 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Worm {
-    public int x, y, wormSizeX, wormSizeY;
-    public double health;
-    public Worm(int x, int y, int wormSizeX, int wormSizeY, int health) {
+    public int x, y, wormSizeX, wormSizeY, health=180;
+    public Worm(int x, int y, int wormSizeX, int wormSizeY) {
         this.x = x;
         this.y = y;
         this.wormSizeX = wormSizeX;
         this.wormSizeY = wormSizeY;
-        this.health = health;
     }
     public boolean isAlive() {
         return health > 0;
