@@ -42,7 +42,7 @@ public class Weapon {
         this.time = 0;
     }
     public void startAnimation(JPanel page, int value) {
-        initialVelocity = 75;
+        initialVelocity = value;
         // Reset time
         calculateMaxDistance();
         timer = new Timer(1, new ActionListener() {
