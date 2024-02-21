@@ -42,7 +42,7 @@ public class Weapon {
         this.time = 0;
     }
     public void startAnimation(JPanel page, int value) {
-        initialVelocity = value;
+        initialVelocity = 75;
         // Reset time
         calculateMaxDistance();
         timer = new Timer(1, new ActionListener() {
@@ -54,7 +54,6 @@ public class Weapon {
                 double verticalDistance = calculateVerticalDistance(); 
                 // Check if the vertical distance is less than or equal to 0 (reached the ground)
                 if (verticalDistance  <= 0) {
-                    System.out.println(calculateHorizontalDistance() + " "  + maxDistance);
                     timer.stop(); // Stop the timer
                     time = 0;
                 } 

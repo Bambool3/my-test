@@ -10,7 +10,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Worm {
-    public int x, y, wormSizeX, wormSizeY, health=180;
+    public int x, y, wormSizeX, wormSizeY, health=350;
     public Worm(int x, int y, int wormSizeX, int wormSizeY) {
         this.x = x;
         this.y = y;

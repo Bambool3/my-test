@@ -65,10 +65,8 @@ public class Display extends JFrame implements ActionListener {
         }
         else if (e.getActionCommand().equals("quit")) {
             removeContent();
+            System.exit(0);
         }
     }
     
-    public static void main(String[] args) {
-        Display display = new Display();
-    }
 }

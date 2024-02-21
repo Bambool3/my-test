@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 public class resumePage extends JPanel {
     public resumePage(ActionListener main) {
         this.setBackground(new Color(241, 98, 69));
+        this.setBounds(0, 0, 1000, 600);
         this.setFocusable(true);
 	this.setLayout(null);
         EleButton restart = new EleButton("restart", 15, 650, 400, 200, 50);		
