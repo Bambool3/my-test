@@ -20,7 +20,6 @@ public class Display extends JFrame implements ActionListener {
     private void setting() {
         this.setTitle("Worm Sweet Worm");
         this.setSize(size);
-        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.getContentPane().add(new GameStartPage(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocation(280, 100);

@@ -2,7 +2,8 @@ package game;
 
 import Character.*;
 import Weapon.*;
-import static Event.Event.checkHit;
+import Event.Event;
+import Optionalitem.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,23 +12,23 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Game extends JPanel implements MouseListener {
-    Worm wormred = new Worm(150, 300, 100, 120);
-    Worm wormyellow = new Worm(720, 300, 100, 120);
-    Weapon redweapon;
-    Weapon yellowweapon;
-    ChargeBar chargeBarRed;
-    ChargeBar chargeBarYellow;      
+    Worm wormred = new Worm(150, 300, 100, 120, 0);
+    Worm wormyellow = new Worm(720, 300, 100, 120, 1);
+    Weapon redweapon, yellowweapon;
+    ChargeBar chargeBarRed, chargeBarYellow; 
+    Optionalitems[] optionalItemsRed, optionalItemsYellow;
     static Display display;
     private boolean startWeaponred = false;
     private boolean startWeaponyellow = false;
-    private int currentPlayer = 0;
+    private int currentPlayer;
     Timer timer;
-
+    
     public Game() {
         this.setBounds(0, 0, 1000, 600);
         this.setFocusable(true);
         this.setLayout(null);
         this.addMouseListener(this);
+        OptionalItems();
     }
     
     @Override
@@ -39,7 +40,6 @@ public class Game extends JPanel implements MouseListener {
         drawHealthRed(g2, wormred);
         drawHealthYellow(g2, wormyellow);
     }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -50,29 +50,41 @@ public class Game extends JPanel implements MouseListener {
             double x = redweapon.x + redweapon.calculateHorizontalDistance();
             double y = redweapon.y - redweapon.calculateVerticalDistance();
             chargeBarRed.paint(g2, 150, 260, 100, 100);
-            if (checkHit(wormyellow, x, y) && !redweapon.getHit()) {
-                wormyellow.health -= 50;
+            if (Event.checkHit(wormyellow, x, y) && !redweapon.getHit()) {
+                if (!wormyellow.isImmortal()) 
+                    if (wormred.isDamX2())
+                        wormyellow.health -= wormred.dam * 2;
+                     else
+                        wormyellow.health -= wormred.dam;
+                wormred.setDamX2(false);
+                wormyellow.setImmortal(false);
                 redweapon.setHit(true);
-                System.out.println("Hit!!!!!!");
                 if (!wormyellow.isAlive()) {
                     display.resumePage();
                 }
             }
-            g2.drawImage(wormred.getImage("/image/Red_Weapon.png"), (int) x, (int) y, redweapon.size, redweapon.size, null);
+            if (wormred.x != x && wormred.y != y)
+                g2.drawImage(wormred.getImage("/image/Red_Weapon.png"), (int) x, (int) y, redweapon.size, redweapon.size, null);
         }
         if (yellowweapon != null) {
             double x = yellowweapon.x - yellowweapon.calculateHorizontalDistance();
             double y = yellowweapon.y - yellowweapon.calculateVerticalDistance();
             chargeBarYellow.paint(g2, 750, 260, 100, 100);
-            if (checkHit(wormred, x, y) && !yellowweapon.getHit()) {
-                wormred.health -= 50;
+            if (Event.checkHit(wormred, x, y) && !yellowweapon.getHit()) {
+                if (!wormred.isImmortal())
+                    if (wormyellow.isDamX2())
+                        wormred.health -= wormyellow.dam * 2;
+                    else
+                        wormred.health -= wormyellow.dam;
+                wormyellow.setDamX2(false);
+                wormred.setImmortal(false);
                 yellowweapon.setHit(true);
-                System.out.println("Hit!!!!!!");
                 if (!wormred.isAlive()) {
                     display.resumePage();
                 }
             }
-            g2.drawImage(wormyellow.getImage("/image/Yellow_Weapon.png"), (int) x, (int) y, yellowweapon.size, yellowweapon.size, null);
+            if (wormyellow.x != x && wormyellow.y != y)
+                g2.drawImage(wormyellow.getImage("/image/Yellow_Weapon.png"), (int) x, (int) y, yellowweapon.size, yellowweapon.size, null);
         }
     }
     
@@ -119,8 +131,21 @@ public class Game extends JPanel implements MouseListener {
             }
             
         }
-        currentPlayer = (currentPlayer + 1) % 2;
+        Timer delayTimer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentPlayer = (currentPlayer + 1) % 2;
+                for(int i = 0; i < optionalItemsRed.length; i++) {
+                    optionalItemsRed[i].currentPlayer = currentPlayer;
+                    optionalItemsYellow[i].currentPlayer = currentPlayer;
+                    }
+                }
+            });
+        delayTimer.setRepeats(false); // Only run once
+        delayTimer.start();
     }
+    
+    
     
     private void drawBackground(Graphics g2) {
         try {
@@ -147,24 +172,38 @@ public class Game extends JPanel implements MouseListener {
     }
     
     private void drawHealthRed(Graphics2D g2, Worm worm) {
-        //g2.drawImage(worm.getImage("/image/heart.png"),10,20, 20,20,null);
         g2.setStroke(new BasicStroke(18.0f));
         g2.setColor(new Color(241, 98, 69));
-        g2.drawLine(100, 85, 80+worm.health, 85);
+        g2.drawLine(430, 85, 450-worm.health, 85);
         g2.setColor(Color.white);
         g2.setStroke(new BasicStroke(6.0f));
-        g2.drawRect(90, 75, 350, 20);
- 
+        g2.drawRoundRect(90, 75, 350, 20, 20, 20);   
     }
+
     private void drawHealthYellow(Graphics2D g2, Worm worm) {
         g2.setStroke(new BasicStroke(18.0f));
         g2.setColor(new Color(241, 98, 69));
         g2.drawLine(560, 85, 540+worm.health, 85);
         g2.setColor(Color.white);
         g2.setStroke(new BasicStroke(6.0f));
-        g2.drawRect(550, 75, 350, 20);
+        g2.drawRoundRect(550, 75, 350, 20, 20, 20);
     }
     
+    private void OptionalItems() {
+        optionalItemsRed = drawOptionalItems(wormred, 150, 110);
+        optionalItemsYellow = drawOptionalItems(wormyellow, 600, 110);
+    }
+
+    private Optionalitems[] drawOptionalItems(Worm worm, int x, int y) {
+        Optionalitems[] optionalItems = new Optionalitems[3];
+        optionalItems[0] = new Optionalitems("src/image/heart.png", "heal", x, y, 30, 30, worm);
+        optionalItems[1] = new Optionalitems("src/image/heart.png", "damX2", x + 100, y, 30, 30, worm);
+        optionalItems[2] = new Optionalitems("src/image/heart.png", "immortal", x + 200, y, 30, 30, worm);
+        this.add(optionalItems[0]);
+        this.add(optionalItems[1]);
+        this.add(optionalItems[2]);
+        return optionalItems;
+    }
 
     // Implementing other MouseListener methods
     @Override

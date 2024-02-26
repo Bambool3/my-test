@@ -5,7 +5,6 @@
 package Element;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class EleButton extends JButton{
@@ -15,6 +14,6 @@ public class EleButton extends JButton{
         this.setBackground(new Color(2, 117, 216));
         this.setForeground(Color.black);
         this.setBounds(x, y, width, height);
-    }		
+    }
 }
 
