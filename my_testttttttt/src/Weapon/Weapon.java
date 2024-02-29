@@ -38,9 +38,6 @@ public class Weapon {
     public double calculateVerticalDistance() {
         return initialVelocity * Math.sin(angle) * time - 0.5 * gravity * time * time;
     }
-    public void setTime() {
-        this.time = 0;
-    }
     public void startAnimation(JPanel page, int value) {
         initialVelocity = value;
         // Reset time

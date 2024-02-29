@@ -4,26 +4,19 @@
  */
 package game;
 
-import java.awt.Color;
+import Element.Button;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
+public class StoryPage extends JPanel {
 
-import Element.EleButton;
-import javax.swing.ImageIcon;
-
-
-public class StoryPage extends JPanel {	
     public StoryPage(ActionListener main) {
-        this.setBackground(new Color(241, 98, 69));
         this.setBounds(0, 0, 1000, 600);
-        this.setFocusable(true);
-	this.setLayout(null);
-        EleButton howToPlay = new EleButton("how to play", 15, 200, 400, 200, 50);		
-        howToPlay.addActionListener(main);
-        this.add(howToPlay);	
-        EleButton letStart = new EleButton("Let's start", 15, 650, 400, 200, 50);		
-        letStart.addActionListener(main);
-        this.add(letStart);
-    }   
+        this.setLayout(null);
+        Button.addButton(this, "src/image/howtoplay.png", "how to play", main, 150, 400);
+        Button.addButton(this, "src/image/letstart.png", "Let's start", main, 600, 400);
+    }
 }

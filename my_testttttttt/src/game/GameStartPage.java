@@ -3,28 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package game;
-
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-
-
-public class GameStartPage extends JPanel {	
+public class GameStartPage extends JPanel {
+    private Image backgroundImage;
+    
     public GameStartPage(ActionListener main) {
-        this.setBackground(new Color(255, 250, 240));
-        this.setFocusable(true);
-	this.setLayout(null);
+        this.setLayout(null);
+        backgroundImage = new ImageIcon("src/image/gamestartpage.png").getImage(); // Change to your image file path
         JButton start = new JButton(new ImageIcon("src/image/start.png"));
-        start.setBounds(380, 400, 200, 100);
+        start.setBounds(350, 400, 250, 200);
         start.setBorderPainted(false);
         start.setContentAreaFilled(false);
         start.setFocusPainted(false);
         start.setActionCommand("start");
         start.addActionListener(main);
-        this.add(start);		
+        this.add(start);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
 }
+

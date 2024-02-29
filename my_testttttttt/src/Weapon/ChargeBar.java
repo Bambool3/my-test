@@ -18,7 +18,7 @@ import javax.swing.JComponent;
 public class ChargeBar extends JComponent {
     
     private int guage_size=15;
-    private Color color1 = new Color(51, 71, 216);
+    private Color color1 = new Color(255, 0, 0);
     private Color color2 = new Color(237, 63, 63);
     private int value;
     private int maximum = 100;
@@ -47,7 +47,7 @@ public class ChargeBar extends JComponent {
 
     public void setColor2(Color color2) {
         this.color2 = color2;
-         repaint();
+        repaint();
     }
 
     public int getValue() {

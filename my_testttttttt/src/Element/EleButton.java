@@ -11,9 +11,10 @@ public class EleButton extends JButton{
     private static final long serialVersionUID = 1L;
     public EleButton(String title,int size,int x,int y,int width,int height) {
         super(title);
-        this.setBackground(new Color(2, 117, 216));
-        this.setForeground(Color.black);
         this.setBounds(x, y, width, height);
+        this.setBorderPainted(false);
+        this.setContentAreaFilled(false);
+        this.setFocusPainted(false);
     }
 }
 
