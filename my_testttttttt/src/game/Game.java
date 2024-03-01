@@ -7,9 +7,6 @@ import Optionalitem.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import java.util.Random;
 
 public class Game extends JPanel implements MouseListener {
@@ -70,7 +67,7 @@ public class Game extends JPanel implements MouseListener {
                 if (!wormyellow.isImmortal()) 
                     if (wormred.isDamX2())
                         wormyellow.health -= wormred.dam * 2;
-                     else
+                    else
                         wormyellow.health -= wormred.dam;
                 wormred.setDamX2(false);
                 wormyellow.setImmortal(false);
@@ -140,7 +137,7 @@ public class Game extends JPanel implements MouseListener {
         if (!startWeaponred && !startWeaponyellow) {
             // If neither weapon is started, return
             return;
-        }
+        }  
         if (timer != null) {
             timer.stop(); // Stop the timer
             if (currentPlayer == 0) {
@@ -151,6 +148,7 @@ public class Game extends JPanel implements MouseListener {
                 //redclick = false;
                 startWeaponred = false;
                 chargeBarRed.setValue(0);
+                chargeBarRed.setShow(false);
             }
             if (currentPlayer == 1) {
                 if (Event.checkDirection(wormyellow, direction)) 
@@ -160,6 +158,7 @@ public class Game extends JPanel implements MouseListener {
                 //yellowclick = false;
                 startWeaponyellow = false;
                 chargeBarYellow.setValue(0);
+                chargeBarYellow.setShow(false);
             }
             
         }
@@ -175,12 +174,9 @@ public class Game extends JPanel implements MouseListener {
     }
     
     private void drawBackground(Graphics g2) {
-        try {
-            BufferedImage backgroundImage = ImageIO.read(getClass().getResource("/image/Background.png"));
-            g2.drawImage(backgroundImage, 0, 0, 1000, 600, null);
-        } catch (IOException ex) {
-            ex.printStackTrace(); // Handle or log the exception properly
-        }
+        Image backgroundImage;
+        backgroundImage = new ImageIcon("src/image/Background.png").getImage();
+        g2.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
 
     private void startCharging(ChargeBar chargebar, MouseEvent e) {
@@ -252,7 +248,6 @@ public class Game extends JPanel implements MouseListener {
            g2.drawLine(500, 130, 500 + wind, 130); // Draw blue wind direction line
         }
     }
-
         
     // Implementing other MouseListener methods
     @Override
