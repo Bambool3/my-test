@@ -50,16 +50,8 @@ public class Game extends JPanel implements MouseListener {
         drawBackground(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(wormred.getImage("/image/Red_Idle.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
-        g2.drawImage(wormyellow.getImage("/image/yellow_Idle.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);
-//        if (!redclick)
-//            g2.drawImage(wormred.getImage("/image/Red_Idle.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
-//        if (!yellowclick)
-//            g2.drawImage(wormyellow.getImage("/image/yellow_Idle.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);    
+        g2.drawImage(wormyellow.getImage("/image/Yellow_Idle.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);
         if (redweapon != null) {
-//            if (startWeaponred) 
-//                g2.drawImage(wormred.getImage("/image/Red_Charge.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
-//            else
-//                g2.drawImage(wormred.getImage("/image/Red_Atk.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
             double x = redweapon.x + redweapon.calculateHorizontalDistance();
             double y = redweapon.y - redweapon.calculateVerticalDistance();
             chargeBarRed.paint(g2, 125, 340, 130, 130);
@@ -73,19 +65,14 @@ public class Game extends JPanel implements MouseListener {
                 wormyellow.setImmortal(false);
                 redweapon.setHit(true);
                 if (!wormyellow.isAlive()) {
-                    display.resumePage();
+                    display.resumePage(wormred);
                 }
             }
             
             if (wormred.x != x && wormred.y != y)
                 g2.drawImage(wormred.getImage("/image/Red_Weapon.png"), (int) x, (int) y, redweapon.size, redweapon.size, null);
         }      
-        if (yellowweapon != null) {
-            
-//            if (startWeaponyellow) 
-//                g2.drawImage(wormyellow.getImage("/image/Yellow_Charge.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);
-//            else
-//                g2.drawImage(wormyellow.getImage("/image/Yellow_Atk.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);     
+        if (yellowweapon != null) {  
             double x = yellowweapon.x - yellowweapon.calculateHorizontalDistance();
             double y = yellowweapon.y - yellowweapon.calculateVerticalDistance();
             chargeBarYellow.paint(g2, 775, 340, 130, 130);
@@ -99,7 +86,7 @@ public class Game extends JPanel implements MouseListener {
                 wormred.setImmortal(false);
                 yellowweapon.setHit(true);
                 if (!wormred.isAlive()) {
-                    display.resumePage();
+                    display.resumePage(wormyellow);
                 }
             }
             if (wormyellow.x != x && wormyellow.y != y)
@@ -220,7 +207,7 @@ public class Game extends JPanel implements MouseListener {
     private Optionalitems[] drawOptionalItems(Worm worm, int x, int y) {
         Optionalitems[] optionalItems = new Optionalitems[3];
         optionalItems[0] = new Optionalitems("src/image/heal.png", "heal", x, y, 60, 60, worm);
-        optionalItems[1] = new Optionalitems("src/image/damx2.png", "damX2", x + 100, y, 60, 60, worm);
+        optionalItems[1] = new Optionalitems("src/image/damx2.png", "damX2", x + 100, y,  60, 60, worm);
         optionalItems[2] = new Optionalitems("src/image/immortal.png", "immortal", x + 200, y, 60, 60, worm);
         this.add(optionalItems[0]);
         this.add(optionalItems[1]);
@@ -248,6 +235,7 @@ public class Game extends JPanel implements MouseListener {
            g2.drawLine(500, 130, 500 + wind, 130); // Draw blue wind direction line
         }
     }
+    
         
     // Implementing other MouseListener methods
     @Override

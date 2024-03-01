@@ -1,26 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import Element.Button;
 
 public class GameStartPage extends JPanel {
     private Image backgroundImage;
     
     public GameStartPage(ActionListener main) {
-        this.setLayout(null);
         backgroundImage = new ImageIcon("src/image/gamestartpage.png").getImage(); // Change to your image file path
-        JButton start = new JButton(new ImageIcon("src/image/start.png"));
-        start.setBounds(350, 400, 250, 200);
-        start.setBorderPainted(false);
-        start.setContentAreaFilled(false);
-        start.setFocusPainted(false);
-        start.setActionCommand("start");
-        start.addActionListener(main);
-        this.add(start);
+        Button.addButton(this, "src/image/start.png", "start", main, 350, 420);
+        this.setLayout(null); 
+        this.setBounds(0, 0, getWidth(), getHeight());
     }
 
     @Override

@@ -3,16 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package game;
+import Character.Worm;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.*;
-/**
- *
- * @author anakponggun
- */
+
 public class Display extends JFrame implements ActionListener {
-    private final Dimension size = new Dimension(1000,600);
+    private final Dimension size = new Dimension(1000, 600);
     public Display() {
         setting();
     }
@@ -38,13 +38,14 @@ public class Display extends JFrame implements ActionListener {
         this.getContentPane().add(new HowToPage(this));
     }
     
-    public void resumePage() {
+    public void resumePage(Worm worm) {
         removeContent();
-	this.getContentPane().add(new resumePage(this));
+	this.getContentPane().add(new resumePage(this, worm));
     }
     
     private void removeContent() {
 	this.getContentPane().removeAll();
+        this.getContentPane().revalidate();
 	this.getContentPane().repaint();
     }
     
