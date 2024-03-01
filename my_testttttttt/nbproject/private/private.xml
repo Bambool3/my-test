@@ -3,26 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Character/Worm.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/redgif.gif</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Red_Charge.png</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/resumePage.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/Display.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/gamestartpage.PNG</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/HowToPage.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Howtoplaypage.png</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/Game.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Character/Worm.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Red_Atk.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Element/Button.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Weapon/ChargeBar.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Yellow_Weapon.PNG</file>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/resumePage.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/ComponentResizer.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/damx2.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Weapon/Weapon.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Optionalitem/Optionalitems.java</file>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/Display.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/GameStartPage.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Yellow_Idle.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Red_Idle.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/button.png</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Yellow_Atk.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/StoryPage.java</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/Event/Event.java</file>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/gamestartpage.PNG</file>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/HowToPage.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Background.png</file>
             <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Red_Weapon.png</file>
-            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/game/Game.java</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Yellow_Charge.png</file>
+            <file>file:/Users/anakponggun/NetBeansProjects/my_testttttttt/src/image/Story.png</file>
         </group>
     </open-files>
 </project-private>

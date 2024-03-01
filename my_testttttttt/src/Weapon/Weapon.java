@@ -39,7 +39,7 @@ public class Weapon {
         return initialVelocity * Math.sin(angle) * time - 0.5 * gravity * time * time;
     }
     public void startAnimation(JPanel page, int value) {
-        initialVelocity = 85;
+        initialVelocity = value;
         // Reset time
         calculateMaxDistance();
         timer = new Timer(1, new ActionListener() {

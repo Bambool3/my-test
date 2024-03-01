@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Character;
 
 import java.awt.image.BufferedImage;
@@ -39,6 +35,13 @@ public class Worm {
     
     public boolean isDamX2() {
         return damX2;
+    }
+    
+    public void setScale(int x, int y, int sizeX, int sizeY) {
+        this.x = x;
+        this.y = y;
+        this.wormSizeX = sizeX;
+        this.wormSizeY = sizeY;
     }
     
     public BufferedImage getImage(String path) {
