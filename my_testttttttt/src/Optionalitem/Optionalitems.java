@@ -9,10 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Optionalitems {
-    public int currentPlayer;
+    private int currentPlayer;
 
     public Optionalitems() {
     }
+    
+    public void setCurrent(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+    
     public void addOpitem(JPanel panel, Worm worm, int x, int y) {
         ActionListener optionalItemListener = new ActionListener() {
             @Override
