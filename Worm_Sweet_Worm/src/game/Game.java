@@ -55,8 +55,8 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         drawBackground(g2);
         drawHealthRed(g2, wormred);
         drawHealthYellow(g2, wormyellow);
-        draw(g2);
         drawWind(g2);
+        draw(g2);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(wormred.getImage("/image/Red_Idle.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
         g2.drawImage(wormyellow.getImage("/image/Yellow_Idle.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);
@@ -234,10 +234,12 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         g2.setStroke(new BasicStroke(scale(18, true)));
         g2.setColor(Color.WHITE);
         g2.drawLine(scale(450, true), scale(85, false), scale(540, true), scale(85, false));
-        Image wind = new ImageIcon("src/image/wind.png").getImage();
-        g2.drawImage(wind, scale(420, true), scale(8, false), scale(150, true), scale(150, false), null);
-        g2.drawImage(wormred.getImage("/image/Red_Atk.png"), scale(430, true), scale(55, false), scale(50, true), scale(50, false), null);
-        g2.drawImage(wormred.getImage("/image/Yellow_Atk.png"), scale(523, true), scale(55, false), scale(50, true), scale(50, false), null);
+        Image windd = new ImageIcon("src/image/wind.png").getImage();
+        g2.drawImage(windd, scale(420, true), scale(8, false), scale(150, true), scale(150, false), null);
+        Image redatk = new ImageIcon("src/image/Red_Atk.png").getImage();
+        g2.drawImage(redatk, scale(430, true), scale(55, false), scale(50, true), scale(50, false), null);
+        Image yellowatk = new ImageIcon("src/image/Yellow_Atk.png").getImage();
+        g2.drawImage(yellowatk, scale(523, true), scale(55, false), scale(50, true), scale(50, false), null);
     }
     
     private void drawWind(Graphics2D g2) {
@@ -251,10 +253,19 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         if (direction == 0) { // If wind is to the left
             g2.setColor(Color.red);
             g2.drawLine(scale(500 - wind, true), scale(125, false), scale(500, true), scale(125, false)); // Draw red wind direction line
+            int[] xPoints = {scale(560, true), scale(580, true), scale(560, true)};
+            int[] yPoints = {scale(110, false), scale(125, false), scale(140, false)};
+            g2.setColor(Color.RED);
+            g2.fillPolygon(xPoints, yPoints, 3);
         } else { // If wind is to the right
-           g2.setColor(new Color(50, 205, 50));
-           g2.drawLine(scale(500, true), scale(125, false), scale(500 + wind, true), scale(125, false)); // Draw blue wind direction line
+            g2.setColor(new Color(50, 205, 50));
+            g2.drawLine(scale(500, true), scale(125, false), scale(500 + wind, true), scale(125, false)); // Draw blue wind direction line
+            int[] xPoints = {scale(450, true), scale(430, true), scale(450, true)};
+            int[] yPoints = {scale(110, false), scale(125, false), scale(140, false)};
+            g2.setColor(Color.RED);
+            g2.fillPolygon(xPoints, yPoints, 3);
         }
+        
     }
     
     public int scale(int value, boolean isXAxis) {
