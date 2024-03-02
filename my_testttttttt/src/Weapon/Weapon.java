@@ -1,4 +1,3 @@
-
 package Weapon;
 
 import java.awt.event.ActionEvent;

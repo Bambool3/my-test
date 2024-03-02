@@ -1,10 +1,7 @@
 package game;
 
 import java.awt.Component;
-import java.awt.Graphics2D;
 import javax.swing.JButton;
-import javax.swing.JPanel;
-
 
 public class ComponentResizer {
     public static void resizecomponent(Component component, int x, int y, int width, int height, int parentWidth, int parentHeight) {
