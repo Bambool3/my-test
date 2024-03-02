@@ -259,7 +259,7 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
             g2.fillPolygon(xPoints, yPoints, 3);
         } else { // If wind is to the right
             g2.setColor(new Color(50, 205, 50));
-            g2.drawLine(scale(500, true), scale(125, false), scale(500 + wind, true), scale(125, false)); // Draw blue wind direction line
+            g2.drawLine(scale(500, true), scale(125, false), scale(500 + wind, true), scale(125, false)); // Draw green wind direction line
             int[] xPoints = {scale(560, true), scale(580, true), scale(560, true)};
             int[] yPoints = {scale(110, false), scale(125, false), scale(140, false)};
             g2.setColor(Color.RED);
