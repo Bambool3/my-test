@@ -7,13 +7,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Worm {
-    public int x, y, wormSizeX, wormSizeY, currentPlayer, health=350, dam=50;
+    public int x, y, wormSizeX, wormSizeY, x_df, y_df, sizeX_df, sizeY_df, currentPlayer, health=350, dam=50;
     private boolean immortal, damX2;
     public Worm(int x, int y, int wormSizeX, int wormSizeY, int currentPlayer) {
         this.x = x;
         this.y = y;
+        this.x_df = x;
+        this.y_df = y;
         this.wormSizeX = wormSizeX;
         this.wormSizeY = wormSizeY;
+        this.sizeX_df = wormSizeX;
+        this.sizeY_df = wormSizeY;
         this.currentPlayer = currentPlayer;
     }
     

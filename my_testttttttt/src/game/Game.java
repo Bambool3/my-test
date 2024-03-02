@@ -46,7 +46,6 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
             setScaleworm(scaleX, scaleY, wormyellow);
         // Repaint the panel
         repaint();
-        // Reset scale factors to default
     }
     
     @Override
@@ -113,7 +112,7 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         int y = e.getY();
 
         if (currentPlayer == 0 && !startWeaponred && x >= wormred.x && x <= wormred.x + wormred.wormSizeX && y >= wormred.y && y <= wormred.y + wormred.wormSizeY) {
-            redweapon = new Weapon(wormred.x, wormred.y+10, 55);
+            redweapon = new Weapon(wormred.x, wormred.y+10, 75);
             chargeBarRed = new ChargeBar();
             startWeaponred = true;
             startWeaponyellow = false;
@@ -121,7 +120,7 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         }
 
         if (currentPlayer == 1 && !startWeaponyellow && x >= wormyellow.x && x <= wormyellow.x + wormyellow.wormSizeX && y >= wormyellow.y && y <= wormyellow.y + wormyellow.wormSizeY) {
-            yellowweapon = new Weapon(wormyellow.x, wormyellow.y+10, 55);
+            yellowweapon = new Weapon(wormyellow.x, wormyellow.y+10, 75);
             chargeBarYellow = new ChargeBar();
             startWeaponyellow = true;
             startWeaponred = false;
@@ -167,13 +166,10 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
     }
         
     private void setScaleworm(double scaleX, double scaleY, Worm worm) {
-        if (worm.currentPlayer == 0)
-            worm.x = (int) (120 * scaleX);
-        else
-            worm.x = (int) (750 * scaleX);
-        worm.y = (int) (400 * scaleY);
-        worm.wormSizeX = (int) (150 * scaleX);
-        worm.wormSizeY = (int) (150 * scaleY);
+        worm.x = (int) (worm.x_df * scaleX);
+        worm.y = (int) (worm.y_df * scaleY);
+        worm.wormSizeX = (int) (worm.sizeX_df * scaleX);
+        worm.wormSizeY = (int) (worm.sizeY_df * scaleY);
     }
     
     
