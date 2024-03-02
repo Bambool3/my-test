@@ -16,7 +16,6 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
     Worm wormyellow = new Worm(780, 400, 100, 120, 1);
     Weapon redweapon, yellowweapon;
     ChargeBar chargeBarRed, chargeBarYellow; 
-    Optionalitems[] optionalItemsRed, optionalItemsYellow;
     static Display display;
     private boolean startWeaponred = false;
     private boolean startWeaponyellow = false;
@@ -24,6 +23,7 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
     private Random random;
     private int wind, direction;
     private double scaleX, scaleY;
+    Optionalitems op = new Optionalitems();
     Timer timer;
     
     public Game() {
@@ -31,7 +31,6 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         this.setFocusable(true);
         this.setLayout(null);
         this.addMouseListener(this);
-        this.OptionalItems();
         this.random = new Random();
         this.addComponentListener(this);
     }
@@ -57,6 +56,8 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         drawHealthRed(g2, wormred);
         drawHealthYellow(g2, wormyellow);
         drawWind(g2);
+        addOpitem(wormred, 130, 110);
+        addOpitem(wormyellow, 600, 110);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(wormred.getImage("/image/Red_Idle.png"), wormred.x, wormred.y, wormred.wormSizeX, wormred.wormSizeY, null);
         g2.drawImage(wormyellow.getImage("/image/Yellow_Idle.png"), wormyellow.x, wormyellow.y, wormyellow.wormSizeX, wormyellow.wormSizeY, null);
@@ -162,17 +163,13 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
             
         }
         currentPlayer = (currentPlayer + 1) % 2;
+        op.currentPlayer = currentPlayer;
         // radom when currentPlayer == 1
         if (currentPlayer == 1) {
             randomWindAndDirection();
         }
-            for(int i = 0; i < optionalItemsRed.length; i++) {
-                optionalItemsRed[i].currentPlayer = currentPlayer;
-                optionalItemsYellow[i].currentPlayer = currentPlayer;
-                }
     }
-    
-    
+        
     private void setScaleworm(double scaleX, double scaleY, Worm worm) {
         if (worm.currentPlayer == 0)
             worm.x = (int) (120 * scaleX);
@@ -223,21 +220,8 @@ public class Game extends JPanel implements MouseListener, ComponentListener {
         g2.drawRoundRect(scale(550, true), scale(75, false), scale(350, true), scale(20, false), scale(20, true), scale(20, true));
     }
     
-    
-    private void OptionalItems() {
-        optionalItemsRed = drawOptionalItems(wormred, 130, 110);
-        optionalItemsYellow = drawOptionalItems(wormyellow, 600, 110);
-    }
-    
-    private Optionalitems[] drawOptionalItems(Worm worm, int x, int y) {
-        Optionalitems[] optionalItems = new Optionalitems[3];
-        optionalItems[0] = new Optionalitems("src/image/heal.png", "heal", x, y, 60, 60, worm);
-        optionalItems[1] = new Optionalitems("src/image/damx2.png", "damX2", x + 100, y,  60, 60, worm);
-        optionalItems[2] = new Optionalitems("src/image/immortal.png", "immortal", x + 200, y, 60, 60, worm);
-        this.add(optionalItems[0]);
-        this.add(optionalItems[1]);
-        this.add(optionalItems[2]);
-        return optionalItems;
+    private void addOpitem(Worm worm, int x, int y) {
+        op.addOpitem(this, worm, x, y);
     }
     
     // 0 is left and 1 is right

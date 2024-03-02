@@ -25,4 +25,20 @@ public class Button {
         });
         panel.add(button);
     }
+    
+    public static void addOptionalitem(JPanel panel, String imagePath, String actionCommand, ActionListener listener, int x, int y) {    
+        JButton optionalitem = new JButton(new ImageIcon(imagePath));
+        optionalitem.setBorderPainted(false);
+        optionalitem.setContentAreaFilled(false);
+        optionalitem.setFocusPainted(false);
+        optionalitem.setActionCommand(actionCommand);
+        optionalitem.addActionListener(listener);
+        panel.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                ComponentResizer.resizecomponent(optionalitem, x, y, 60, 60, panel.getWidth(), panel.getHeight());
+            }
+        });
+        panel.add(optionalitem);
+    }
 }
